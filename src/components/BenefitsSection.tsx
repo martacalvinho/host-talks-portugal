@@ -1,8 +1,7 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
-import { MessageSquare, Gift, Robot, Brain, LockKeyhole, Video } from "lucide-react";
+import { MessageSquare, Gift, Bot, Brain, LockKeyhole, Video } from "lucide-react";
 
 const BenefitsSection = () => {
   const benefits = [
@@ -17,7 +16,7 @@ const BenefitsSection = () => {
       description: "Seja dos primeiros a experimentar o Hostsy quando estiver pronto."
     },
     {
-      icon: <Robot className="text-coral" size={24} />,
+      icon: <Bot className="text-coral" size={24} />,
       title: "Veja uma demo com IA em ação (opcional)",
       description: "Demonstramos como a IA pode transformar a sua comunicação."
     },
