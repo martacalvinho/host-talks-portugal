@@ -23,7 +23,7 @@ const Header = () => {
         </motion.div>
         
         <div className="hidden md:block">
-          <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://calendly.com/hostsys" target="_blank" rel="noopener noreferrer">
             <HostsyButton variant="outline" size="sm" className="flex items-center gap-2 border border-coral/50 backdrop-blur-sm">
               <Calendar size={16} />
               <span>Agendar Entrevista</span>
