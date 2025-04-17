@@ -24,7 +24,7 @@ const TeamMember = ({ name, role }: TeamMemberProps) => {
 
 const TeamSection = () => {
   const team = [
-    { name: "Alváro", role: "CEO" },
+    { name: "Álvaro", role: "CEO" },
     { name: "Marta", role: "Engenharia / AI" },
     { name: "Ruim", role: "Marketing / Sales" }
   ];
@@ -42,7 +42,7 @@ const TeamSection = () => {
             Quem está por trás do Hostsy?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Somos uma pequena equipa em Lisboa apaixonada por tecnologia e Alojamento Local.
+            Somos uma pequena equipa em Portugal apaixonada por tecnologia e Alojamento Local.
             <br />
             Estamos a criar uma solução simples, bonita e inteligente para resolver o caos da comunicação com hóspedes.
           </p>

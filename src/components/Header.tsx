@@ -18,8 +18,11 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <span className="text-coral text-2xl mr-2 animate-pulse-light">●</span>
-          <span className="font-semibold text-xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Hostsy</span>
+          <img 
+            src="/lovable-uploads/457e2d55-ad73-4e2b-889e-6c0c5e952ff6.png" 
+            alt="Hostsys Logo" 
+            className="h-8 mr-2"
+          />
         </motion.div>
         
         <div className="hidden md:block">
