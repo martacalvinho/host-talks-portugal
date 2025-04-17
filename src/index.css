@@ -141,6 +141,15 @@
   animation: float 3s ease-in-out infinite;
 }
 
+@keyframes pulse-light {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-light {
+  animation: pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
