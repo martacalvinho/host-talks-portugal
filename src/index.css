@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +100,10 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+}
+
+.coral-gradient {
+  background: linear-gradient(135deg, #FF7D63 0%, #FF5C38 100%);
 }
