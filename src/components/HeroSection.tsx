@@ -1,49 +1,67 @@
 
 import React from "react";
 import HostsyButton from "./HostsyButton";
+import { Calendar, MessageSquare, Mail, Home } from "lucide-react";
+import { motion } from "framer-motion";
+import ImageComponent from "./ImageComponent";
 
 const HeroSection = () => {
+  const messageIcons = [
+    { icon: <MessageSquare className="w-5 h-5" />, label: "WhatsApp" },
+    { icon: <Mail className="w-5 h-5" />, label: "Email" },
+    { icon: <Home className="w-5 h-5" />, label: "Airbnb/Booking" },
+  ];
+
   return (
-    <div className="relative bg-white py-12 md:py-16 lg:py-20 px-4">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
-          Cansado do Caos na Comunicação com Hóspedes?
+    <div className="relative bg-gradient-to-b from-white to-gray-50 py-20 md:py-24 lg:py-28 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800 leading-tight">
+          Cansado do{" "}
+          <span className="bg-gradient-to-r from-coral to-coral-light bg-clip-text text-transparent">
+            Caos
+          </span>{" "}
+          na Comunicação com Hóspedes?
         </h1>
-        <p className="text-lg md:text-xl mb-8 text-gray-600 max-w-2xl mx-auto">
+        
+        <p className="text-lg md:text-xl mb-10 text-gray-600 max-w-2xl mx-auto leading-relaxed">
           Gerir mensagens do Airbnb, Booking, WhatsApp e Email ao mesmo tempo é um desafio. 
           Estamos a desenvolver uma solução <span className="font-semibold">específica</span> para gestores de AL em Portugal como você.
         </p>
         
-        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
+        <div className="flex justify-center mb-12">
           <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-            <HostsyButton size="lg">
+            <HostsyButton 
+              size="lg"
+              className="hover:scale-105 transition-transform duration-300 shadow-lg shadow-coral/20 flex items-center gap-2"
+            >
+              <Calendar className="w-5 h-5" />
               Quero Partilhar a Minha Experiência (30 min)
             </HostsyButton>
           </a>
         </div>
         
-        <div className="mt-10 bg-gray-50 p-4 rounded-lg">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-            <div className="flex flex-col items-center p-2">
-              <div className="text-coral mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              </div>
-              <p className="text-sm text-gray-600">WhatsApp</p>
-            </div>
-            <div className="flex flex-col items-center p-2">
-              <div className="text-coral mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-              </div>
-              <p className="text-sm text-gray-600">Email</p>
-            </div>
-            <div className="flex flex-col items-center p-2">
-              <div className="text-coral mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-              </div>
-              <p className="text-sm text-gray-600">Airbnb/Booking</p>
-            </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="mt-10 bg-white p-6 rounded-2xl shadow-lg"
+        >
+          <div className="grid grid-cols-3 gap-4 items-center">
+            {messageIcons.map((item, index) => (
+              <motion.div 
+                key={index}
+                whileHover={{ y: -5, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="flex flex-col items-center p-3"
+              >
+                <div className="text-coral mb-2 bg-coral-light/10 p-3 rounded-full">
+                  {item.icon}
+                </div>
+                <p className="text-sm text-gray-600">{item.label}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
