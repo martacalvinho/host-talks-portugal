@@ -26,8 +26,6 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ open, onOpenChange }) => 
       properties: 1
     }
   });
-  const firstFieldRef = useRef<HTMLInputElement>(null);
-
   const onSubmit = async (data: WaitlistForm) => {
     try {
       const { error } = await supabase
@@ -57,13 +55,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ open, onOpenChange }) => 
     }
   };
 
-  React.useEffect(() => {
-    if (open) {
-      setTimeout(() => {
-        firstFieldRef.current?.focus();
-      }, 100);
-    }
-  }, [open]);
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -81,7 +73,6 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ open, onOpenChange }) => 
               id="waitlist-nome"
               placeholder="O seu nome"
               {...register("name", { required: "Nome é obrigatório" })}
-              ref={firstFieldRef}
               disabled={isSubmitting}
               autoComplete="name"
             />
