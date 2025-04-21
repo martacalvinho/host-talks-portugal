@@ -1,4 +1,3 @@
-
 import React from "react";
 import HostsyButton from "./HostsyButton";
 import { Calendar, MessageSquare, Mail, Home } from "lucide-react";
@@ -24,7 +23,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-b from-white to-gray-50 py-24 px-4 overflow-hidden">
+    <div id="hero" className="relative bg-gradient-to-b from-white to-gray-50 py-24 px-4 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -right-24 -top-24 w-64 h-64 rounded-full bg-coral/5 blur-3xl"></div>
@@ -38,14 +37,14 @@ const HeroSection = () => {
           variants={textVariants}
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
         >
-          Cansado do{" "}
+          Está cansado do{" "}
           <span className="bg-gradient-to-r from-coral to-coral-light bg-clip-text text-transparent relative">
-            Caos
+            caos
             <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 138 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 5.26751C48.3333 -0.732487 114.667 -0.732471 137 5.26751" stroke="#FF5C38" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </span>{" "}
-          na Comunicação com Hóspedes?
+          na comunicação com hóspedes?
         </motion.h1>
         
         <motion.p 
@@ -62,20 +61,32 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex justify-center mb-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-            <HostsyButton 
-              size="lg"
-              className="shadow-xl shadow-coral/20 flex items-center gap-2 relative z-10"
-            >
-              <Calendar className="w-5 h-5" />
-              Quero Partilhar a Minha Experiência (30 min)
-            </HostsyButton>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="https://calendly.com/hostsys" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <HostsyButton 
+                size="lg"
+                className="shadow-xl shadow-coral/20 flex items-center gap-2 relative z-10 w-full"
+              >
+                <Calendar className="w-5 h-5" />
+                Agendar Entrevista de 30 mins
+              </HostsyButton>
+            </a>
+            <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth', block: 'center' })} className="w-full sm:w-auto">
+              <HostsyButton 
+                variant="ghost"
+                size="lg"
+                className="flex items-center justify-center gap-2 text-coral hover:text-coral-dark hover:bg-coral/5 w-full"
+              >
+                Lista de Espera
+              </HostsyButton>
+            </button>
+          </div>
         </motion.div>
         
         <motion.div 
+          id="sneak-peek"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}

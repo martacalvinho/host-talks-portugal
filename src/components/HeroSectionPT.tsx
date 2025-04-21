@@ -30,13 +30,31 @@ const HeroSectionPT = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="https://calendly.com/hostsys" target="_blank" rel="noopener noreferrer">
-            <HostsyButton size="lg" className="flex items-center gap-2 mx-auto">
-              <Calendar size={20} />
-              <span>Agendar Entrevista de 30 Minutos</span>
-            </HostsyButton>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="https://calendly.com/hostsys" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <HostsyButton 
+                size="lg"
+                className="shadow-xl shadow-coral/20 flex items-center gap-2 relative z-10 w-full"
+              >
+                <Calendar className="w-5 h-5" />
+                Agendar Entrevista de 30 mins
+              </HostsyButton>
+            </a>
+            <button 
+              onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth', block: 'center' })} 
+              className="w-full sm:w-auto"
+            >
+              <HostsyButton 
+                variant="ghost"
+                size="lg"
+                className="flex items-center justify-center gap-2 text-coral hover:text-coral-dark hover:bg-coral/5 w-full"
+              >
+                Lista de Espera
+              </HostsyButton>
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
