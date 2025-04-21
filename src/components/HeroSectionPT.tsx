@@ -1,10 +1,12 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import HostsyButton from "./HostsyButton";
 import { Calendar } from "lucide-react";
+import WaitlistModal from "./WaitlistModal";
 
 const HeroSectionPT = () => {
+  const [waitlistOpen, setWaitlistOpen] = React.useState(false);
+
   return (
     <section className="py-16 px-4 md:py-24">
       <div className="max-w-4xl mx-auto text-center">
@@ -42,8 +44,9 @@ const HeroSectionPT = () => {
                 Agendar Entrevista de 30 mins
               </HostsyButton>
             </a>
-            <button 
-              onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth', block: 'center' })} 
+            <button
+              type="button"
+              onClick={() => setWaitlistOpen(true)} 
               className="w-full sm:w-auto"
             >
               <HostsyButton 
@@ -57,6 +60,7 @@ const HeroSectionPT = () => {
           </div>
         </motion.div>
       </div>
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </section>
   );
 };

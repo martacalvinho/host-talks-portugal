@@ -1,13 +1,14 @@
-
 import React, { useState, useEffect } from "react";
 import HostsyButton from "./HostsyButton";
 import { Calendar, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import WaitlistModal from "./WaitlistModal";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +40,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/457e2d55-ad73-4e2b-889e-6c0c5e952ff6.png" 
               alt="Hostsys Logo" 
-              className="h-16 w-auto" // Doubled size from h-8
+              className="h-16 w-auto"
             />
             <div className="text-2xl font-bold tracking-tight">
               <span className="text-gray-900">Host</span>
@@ -88,9 +89,10 @@ const Header = () => {
                 <span>Agendar Entrevista</span>
               </HostsyButton>
             </a>
-            <a 
-              href="#waitlist" 
+            <button 
               className="inline-block"
+              type="button"
+              onClick={() => setWaitlistOpen(true)}
             >
               <HostsyButton 
                 variant="ghost" 
@@ -99,7 +101,7 @@ const Header = () => {
               >
                 <span>Lista de Espera</span>
               </HostsyButton>
-            </a>
+            </button>
           </div>
 
           <button 
@@ -145,10 +147,24 @@ const Header = () => {
                   <span>Agendar Entrevista</span>
                 </HostsyButton>
               </a>
+              <button
+                type="button"
+                className="inline-block"
+                onClick={() => setWaitlistOpen(true)}
+              >
+                <HostsyButton 
+                  variant="ghost"
+                  size="sm"
+                  className="w-full flex items-center gap-2 text-coral hover:text-coral-dark hover:bg-coral/5"
+                >
+                  <span>Lista de Espera</span>
+                </HostsyButton>
+              </button>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </motion.header>
   );
 };
