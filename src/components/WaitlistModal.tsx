@@ -1,6 +1,6 @@
 
 import React, { useRef } from "react";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
@@ -19,25 +19,41 @@ interface WaitlistModalProps {
 }
 
 const WaitlistModal: React.FC<WaitlistModalProps> = ({ open, onOpenChange }) => {
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<WaitlistForm>();
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<WaitlistForm>({
+    defaultValues: {
+      name: "",
+      email: "",
+      properties: 1
+    }
+  });
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (data: WaitlistForm) => {
-    const { error } = await supabase
-      .from("waitlist")
-      .insert([{ name: data.name, email: data.email, properties: Number(data.properties) }]);
-    if (error) {
+    try {
+      const { error } = await supabase
+        .from("waitlist")
+        .insert([{ name: data.name, email: data.email, properties: Number(data.properties) }]);
+      
+      if (error) {
+        console.error("Supabase error:", error);
+        toast({
+          title: "Erro",
+          description: "Não foi possível adicionar à lista de espera. Tente novamente.",
+        });
+      } else {
+        toast({
+          title: "Sucesso!",
+          description: "Você foi adicionado à lista de espera 🚀",
+        });
+        reset();
+        onOpenChange(false);
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
       toast({
         title: "Erro",
-        description: "Não foi possível adicionar à lista de espera. Tente novamente.",
+        description: "Ocorreu um erro inesperado. Por favor, tente novamente.",
       });
-    } else {
-      toast({
-        title: "Sucesso!",
-        description: "Você foi adicionado à lista de espera 🚀",
-      });
-      reset();
-      onOpenChange(false);
     }
   };
 
